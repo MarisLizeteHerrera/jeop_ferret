@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyText
+  answer: MyString
+  points: 1
+  complete: false
+  category: one
+
+two:
+  question: MyText
+  answer: MyString
+  points: 1
+  complete: false
+  category: two
