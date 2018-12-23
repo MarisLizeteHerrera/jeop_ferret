@@ -8,7 +8,7 @@ export const getCards = (category_id) => {
       .then(res => {
         dispatch ({ type: CARDS, cards: res.data })
       }).catch(err => {
-        console.log(err)
+        console.log(err) 
     });
   }
 }

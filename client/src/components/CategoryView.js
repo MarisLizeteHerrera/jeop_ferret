@@ -6,7 +6,7 @@ import { getCards } from '../reducers/cards';
 class CategoryView extends React.Component {
 
   componentDidMount() { 
-    this.props.dispatch(getCards(this.props.match.params.id))
+    // this.props.dispatch(getCards(this.props.match.params.id))
   }
 
   cards = () => {

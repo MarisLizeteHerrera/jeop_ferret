@@ -6,42 +6,34 @@ import { getCards } from '../reducers/cards'
 import styled from 'styled-components'
 
 class Categories extends React.Component {
-  // function to map over each category and get its id
-  // Get the cards based on category id
-  // Save cards in state
-  // Display state
+  /* TO DO
+    1. Function for each category to put the category name
+        and questions on the screen
+      - Will need to filter and only display questions
+          belonging to that category
 
-  // Figure out rest (organization visually) after cards 
-  // are saved in state
+    2. To keep code clean, a function that takes in props
+        and renders the item (const not class)
 
+    3. When clicking item, load it in browser (catId/questionId)
+        Will need a button to go back to /
+        
+  */ 
   state = { categories: [], cards: [] }
-  componentDidMount() { 
+  componentDidMount() {
     this.props.dispatch(getCategories(this.props.match.params.id))
-    // this.setState({
-    //   categories: this.props.categories,
-    // })
-    // console.log("State:")
-    // console.log(this.state)
-    // console.log("Props")
-    // console.log(this.props)
-    // debugger
-    // Get cards based on category
-    // this.props.dispatch(getCards(
-    //   this.props.dispatch(getCategories(this.props.match.params.id))
-    // ));
-    this.getCatId();
   }
 
-  getCatId = () => {
-    return this.props.categories.map( cat => {
-      const { id } = cat
-      console.log('Category ID: ')
-      console.log(id)
-    });
+  renderCards = () => {
+    return this.props.cards.map(card => (
+      <Cat key={ card.id }>
+        <h1>{ card.points }</h1>
+      </Cat>
+    ));
   }
 
   categories = () => {
-    return this.props.categories.map( category => 
+    return this.props.categories.map(category =>
       <div key={category.id}>
         <Cat>
           <h1>{category.name}</h1>
@@ -49,25 +41,18 @@ class Categories extends React.Component {
             <p> View Category </p>
           </Link>
         </Cat>
+        <ul>
+          { this.renderCards() }
+        </ul>
       </div>
     )
   }
 
 
-
-
-  cards = () => {
-    return this.props.cards.map( card => (
-      <div key={card.id}>
-        <p> Points - {card.points} </p>
-      </div>
-    ))
-  }
-
   render() {
-    return(
+    return (
       <CatCont className='orange'>
-        {this.categories()}
+        { this.categories() }
       </CatCont>
 
     )
@@ -75,7 +60,10 @@ class Categories extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { categories: state.categories }
+  return {
+    categories: state.categories,
+    cards: state.cards,
+  }
 }
 
 const CatCont = styled.div`

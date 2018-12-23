@@ -3,9 +3,10 @@ class Api::CardsController < ApplicationController
   before_action :set_category
 
   def index
-    render json: @category.cards.order(created_at: :desc)
+    # render json: @category.cards.order(created_at: :desc)
+    render json: Card.all
   end
-
+  
   def show
     reenders json: @card
   end

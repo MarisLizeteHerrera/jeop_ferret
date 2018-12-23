@@ -4,11 +4,13 @@ import { Route, } from "react-router-dom";
 import Categories from "./Categories";
 import CategoryView from "./CategoryView";
 import { getCategories, } from "../reducers/categories";
+import { getCards } from '../reducers/cards';
 
 class FetchCategories extends React.Component {
   state = { loaded: false, };
 
   componentDidMount() {
+    this.props.dispatch(getCards(1));
     this.props.dispatch(getCategories(this.setLoaded))
   }
 
@@ -19,8 +21,8 @@ class FetchCategories extends React.Component {
     if (loaded) {
       return (
         <div>
-          <Route exact path="/"component={Categories}/>
-          <Route exact path="/:id"component={CategoryView}/>
+          <Route exact path="/" component={Categories}/>
+          <Route exact path="/:id" component={CategoryView}/>
         </div>
       )
     } else {
