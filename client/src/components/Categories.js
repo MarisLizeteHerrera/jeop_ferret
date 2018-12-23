@@ -17,7 +17,7 @@ class Categories extends React.Component {
 
     3. When clicking item, load it in browser (catId/questionId)
         Will need a button to go back to /
-        
+
   */ 
   state = { categories: [], cards: [] }
   componentDidMount() {
