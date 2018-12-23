@@ -2,35 +2,42 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCategories } from '../reducers/categories';
+import { getCards } from '../reducers/cards'
 import styled from 'styled-components'
-import getCards from '../reducers/cards'
 
 class Categories extends React.Component {
-  // Set state to hold the categories
-  // This will be used to get category.id
-  // Will use state instead of props after saving to state
-
-  // function to map over each category and
-  // Get the cards (from cards reducer)
+  // function to map over each category and get its id
+  // Get the cards based on category id
   // Save cards in state
+  // Display state
 
-  // Figure out rest after cards are saved in state
+  // Figure out rest (organization visually) after cards 
+  // are saved in state
 
   state = { categories: [], cards: [] }
   componentDidMount() { 
-    // this.props.dispatch(getCategories(this.props.match.params.id))
+    this.props.dispatch(getCategories(this.props.match.params.id))
     // this.setState({
     //   categories: this.props.categories,
     // })
-    console.log("State:")
-    console.log(this.state)
-    console.log("Props")
-    console.log(this.props)
+    // console.log("State:")
+    // console.log(this.state)
+    // console.log("Props")
+    // console.log(this.props)
     // debugger
     // Get cards based on category
     // this.props.dispatch(getCards(
     //   this.props.dispatch(getCategories(this.props.match.params.id))
     // ));
+    this.getCatId();
+  }
+
+  getCatId = () => {
+    return this.props.categories.map( cat => {
+      const { id } = cat
+      console.log('Category ID: ')
+      console.log(id)
+    });
   }
 
   categories = () => {
@@ -45,6 +52,7 @@ class Categories extends React.Component {
       </div>
     )
   }
+
 
 
 
