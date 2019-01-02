@@ -29,7 +29,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 
 group :development, :test do
-  gem 'faker', github: 'stympy/faker.git'
+  gem 'faker'
   gem 'pry'
 end
 
